@@ -1,0 +1,41 @@
+function abnormalRotation() 
+{
+  var theNests = ['R10','R11','R12','R13','R14','R15','R16','R17','R18','R19','R20','R21','R22','R23','R24','R25','R26','R27','R28','R29','R30','R31','R32','R33','R34','R35','R36','R37','R38','R39','R40',
+               'R41','R42','R43','R44','R45','R46','R47','R48','R49','R50','R51','R52','R53','R54','R55','R56','R57','R58','R59','R60','R61','R62','R63','R64','R65','R66','R67','R68','R69','R70','R71',
+               'R72','R73','R74','R75','R76','R77','R78','R79','R80','R81','R82','R83','R84','R85','R86','S10','S11','S12','S13','S14','S15','S16','S17','S18','S19','S20','S21','S22','S26','S27','S28',
+               'S29','S30','S31','S32','S33','S34','S35','S36','S37','S38','S39','S40','S41','S42','S46','S47','S48','S49','S53','S54','S55','S56','S57','S58','S59','S60','S61','S62','S63','S64','S68',
+               'S69','S70','S71','S72','S76','S77','S78','S82','S83','S84',]
+  var theCells = ['C10:F10','C11:F11','C12:F12','C13:F13','C14:F14','C15:F15','C16:F16','C17:F17','C18:F18','C19:F19','C20:F20','C21:F21','C22:F22','C23:F23','C24:F24','C25:F25','C26:F26','C27:F27',
+                  'C28:F28','C29:F29','C30:F30','C31:F31','C32:F32','C33:F33','C34:F34','C35:F35','C36:F36','C37:F37','C38:F38','C39:F39','C40:F40','C41:F41','C42:F42','C43:F43','C44:F44','C45:F45',
+                  'C46:F46','C47:F47','C48:F48','C49:F49','C50:F50','C51:F51','C52:F52','C53:F53','C54:F54','C55:F55','C56:F56','C57:F57','C58:F58','C59:F59','C60:F60','C61:F61','C62:F62','C63:F63',
+                  'C64:F64','C65:F65','C66:F66','C67:F67','C68:F68','C69:F69','C70:F70','C71:F71','C72:F72','C73:F73','C74:F74','C75:F75','C76:F76','C77:F77','C78:F78','C79:F79','C80:F80','C81:F81',
+                  'C82:F82','C83:F83','C84:F84','C85:F85','C86:F86','H10:K10','H11:K11','H12:K12','H13:K13','H14:K14','H15:K15','H16:K16','H17:K17','H18:K18','H19:K19','H20:K20','H21:K21','H22:K22',
+                  'H26:K26','H27:K27','H28:K28','H29:K29','H30:K30','H31:K31','H32:K32','H33:K33','H34:K34','H35:K35','H36:K36','H37:K37','H38:K38','H39:K39','H40:K40','H41:K41','H42:K42','H46:K46',
+                  'H47:K47','H48:K48','H49:K49','H53:K53','H54:K54','H55:K55','H56:K56','H57:K57','H58:K58','H59:K59','H60:K60','H61:K61','H62:K62','H63:K63','H64:K64','H68:K68','H69:K69','H70:K70',
+                  'H71:K71','H72:K72','H76:K76','H77:K77','H78:K78','H82:K82','H83:K83','H84:K84']
+  var size = 134
+  var answer = 'FALSE'
+  var rotate = 'YES'
+  var grab = SpreadsheetApp.getActiveSheet().getRange('R6').getValue()
+  
+  // Checks if cell R6 is YES, if so then rules the script below 
+  if (rotate = grab) {
+    // Array for items below
+    for (i=0;i<size;i++) {
+      var arrayOne = theNests[i]
+      var answerOne = SpreadsheetApp.getActiveSheet().getRange(arrayOne).getValue()   
+      // Checks if cells have active reported nests. If it does, it colors the block of cells
+      if (answerOne == answer) {
+        var arrayThree = theCells[i]
+        SpreadsheetApp.getActiveSheet().getRange(arrayThree).setBackground("#F1C232");
+      }
+      // If it does not have an active reported nest, this script does nothing to the block of cells
+      else{
+      }
+    }
+  }
+  else {
+  }
+  // Clears out YES value in cell R6 sent from Discord Bot
+  SpreadsheetApp.getActiveSheet().getRange('R6').setValue(" ");
+}
